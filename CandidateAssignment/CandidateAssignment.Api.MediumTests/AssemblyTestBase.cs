@@ -13,7 +13,7 @@ namespace CandidateAssignment.Api.MediumTests
     {
         protected CustomerController Sut;
         protected IGenericRepository<Customer> CustomerRepo;
-        private ApplicationDbContext Context;
+        protected ApplicationDbContext Context;
         private Fixture Fixture;
 
         [TestInitialize]
@@ -51,6 +51,7 @@ namespace CandidateAssignment.Api.MediumTests
         {
             Context.AddRange(customers);
             Context.SaveChanges();
+            
         }
 
         protected Customer CreateCustomer()

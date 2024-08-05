@@ -14,6 +14,8 @@ namespace CandidateAssignment.Api.MediumTests.CustomerControllerTests
             var result = await Sut.CreateAsync(customer);
 
             Assert.IsNotNull(result);
+            
+            Assert.IsInstanceOfType(result, typeof(CreatedResult));
         }
 
         [TestMethod]

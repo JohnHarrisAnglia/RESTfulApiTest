@@ -44,5 +44,13 @@ namespace CandidateAssignment.Api.Controllers
 
             return NoContent();
         }
+
+        [HttpDelete]
+        public async Task<IActionResult> DeleteAsync(int id)
+        {
+            await customerRepo.DeleteAsync(id);
+
+            return NoContent();
+        }
     }
 }

@@ -22,7 +22,8 @@ namespace CandidateAssignment.DataAccess.Repositories
 
         public async Task DeleteAsync(int id)
         {
-            var entity = await GetByIdAsync(id);
+            var entity = await _dbContext.Set<TEntity>()
+                .FirstOrDefaultAsync(e => e.Id == id);
             _dbContext.Set<TEntity>().Remove(entity);
             await _dbContext.SaveChangesAsync();
         }
