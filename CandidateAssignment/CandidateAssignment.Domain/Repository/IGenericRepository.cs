@@ -1,8 +1,8 @@
 ﻿using CandidateAssignment.Domain.Models.Entities;
 
-namespace CandidateAssignment.DataAccess.Repositories
+namespace CandidateAssignment.Domain.Repository
 {
-    public interface IGenericRepository<TEntity>  where TEntity : class, IEntity
+    public interface IGenericRepository<TEntity> where TEntity : class, IEntity
     {
         IQueryable<TEntity> GetAll();
 

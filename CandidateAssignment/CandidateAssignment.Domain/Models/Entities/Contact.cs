@@ -25,5 +25,10 @@ namespace CandidateAssignment.Domain.Models.Entities
             EmailAddress = emailAddress;
             PhoneNumber = phoneNumber;
         }
+
+        public Contact()
+        {
+            
+        }
     }
 }

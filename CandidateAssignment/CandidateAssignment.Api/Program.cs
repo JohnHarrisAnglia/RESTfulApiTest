@@ -2,6 +2,7 @@
 using CandidateAssignment.DataAccess;
 using CandidateAssignment.DataAccess.Repositories;
 using CandidateAssignment.Domain.Models.Entities;
+using CandidateAssignment.Domain.Repository;
 using Microsoft.EntityFrameworkCore;
 
 namespace CandidateAssignment.Api
@@ -22,7 +23,7 @@ namespace CandidateAssignment.Api
             builder.Services.AddDbContext<ApplicationDbContext>(options =>
                 options.UseInMemoryDatabase(builder.Configuration.GetValue<string>("DatabaseName")));
 
-            builder.Services.AddSingleton<IGenericRepository<IEntity>, GenericRepository<IEntity>>();
+            builder.Services.AddScoped(typeof(IGenericRepository<>), typeof(GenericRepository<>));
 
             var app = builder.Build();
 

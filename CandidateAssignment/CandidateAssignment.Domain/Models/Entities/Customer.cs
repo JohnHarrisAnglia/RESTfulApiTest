@@ -7,7 +7,7 @@ namespace CandidateAssignment.Domain.Models.Entities
         [Required]
         public string Name { get; private set; }
         [Required]
-        public virtual Address Address { get; private set; }
+        public Address? Address { get; private set; }
 
         [Required, MaxLength(13)]
         public string PhoneNumber { get; private set; }
@@ -23,6 +23,11 @@ namespace CandidateAssignment.Domain.Models.Entities
             Address = address;
             PhoneNumber = phoneNumber;
             Website = website;
+        }
+
+        public Customer()
+        {
+            
         }
     }
 }

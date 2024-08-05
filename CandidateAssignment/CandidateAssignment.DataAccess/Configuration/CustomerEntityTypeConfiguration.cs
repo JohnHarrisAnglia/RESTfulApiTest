@@ -13,9 +13,6 @@ namespace CandidateAssignment.DataAccess.Configuration
             builder.Property(p => p.Name).IsRequired();
             builder.Property(p => p.Website).IsRequired();
             builder.Property(p => p.PhoneNumber).HasMaxLength(13).IsRequired();
-            builder.Property(p => p.Address).IsRequired();
-
-          
         }
     }
 }

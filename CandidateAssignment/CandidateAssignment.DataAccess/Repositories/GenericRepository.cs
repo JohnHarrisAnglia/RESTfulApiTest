@@ -1,4 +1,5 @@
 ﻿using CandidateAssignment.Domain.Models.Entities;
+using CandidateAssignment.Domain.Repository;
 using Microsoft.EntityFrameworkCore;
 
 namespace CandidateAssignment.DataAccess.Repositories

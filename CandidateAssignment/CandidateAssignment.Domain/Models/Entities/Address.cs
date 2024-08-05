@@ -1,5 +1,4 @@
 ﻿using System.ComponentModel.DataAnnotations;
-using System.Reflection.Metadata;
 
 namespace CandidateAssignment.Domain.Models.Entities
 {
@@ -17,7 +16,7 @@ namespace CandidateAssignment.Domain.Models.Entities
         [Required, MaxLength(100)]
         public string Country { get; private set; }
 
-        public int CustomerId { get; set; } // Required foreign key property
+        public int CustomerId { get; set; }
         public Customer Customer { get; set; } = null!;
 
         public Address(string firstLine, string city, string postcode, string country)
@@ -26,6 +25,11 @@ namespace CandidateAssignment.Domain.Models.Entities
             City = city;
             Postcode = postcode;
             Country = country;
+        }
+
+        public Address()
+        {
+            
         }
     }
 }
