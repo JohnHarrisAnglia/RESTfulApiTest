@@ -1,4 +1,9 @@
 
+using CandidateAssignment.DataAccess;
+using CandidateAssignment.DataAccess.Repositories;
+using CandidateAssignment.Domain.Models.Entities;
+using Microsoft.EntityFrameworkCore;
+
 namespace CandidateAssignment.Api
 {
     public class Program
@@ -13,6 +18,11 @@ namespace CandidateAssignment.Api
             // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();
+
+            builder.Services.AddDbContext<ApplicationDbContext>(options =>
+                options.UseInMemoryDatabase(builder.Configuration.GetValue<string>("DatabaseName")));
+
+            builder.Services.AddSingleton<IGenericRepository<IEntity>, GenericRepository<IEntity>>();
 
             var app = builder.Build();
 
