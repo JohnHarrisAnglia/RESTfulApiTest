@@ -1,8 +1,6 @@
 ﻿using CandidateAssignment.Domain.Models.Entities;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
-using System.Reflection.Emit;
-using System.Reflection.Metadata;
 
 namespace CandidateAssignment.DataAccess.Configuration
 {

@@ -5,19 +5,19 @@ namespace CandidateAssignment.Domain.Models.Entities
     public class Address : Entity
     {
         [Required]
-        public string FirstLine { get; private set; }
+        public string FirstLine { get; set; }
 
         [Required]
-        public string City { get; private set; }
+        public string City { get; set; }
 
         [Required, MaxLength(10)]
-        public string Postcode { get; private set; }
+        public string Postcode { get; set; }
 
         [Required, MaxLength(100)]
-        public string Country { get; private set; }
+        public string Country { get; set; }
 
-        public int CustomerId { get; set; }
-        public Customer Customer { get; set; } = null!;
+        public int CustomerId { get; private set; }
+        public Customer? Customer { get; private set; } = null!;
 
         public Address(string firstLine, string city, string postcode, string country)
         {
@@ -29,7 +29,6 @@ namespace CandidateAssignment.Domain.Models.Entities
 
         public Address()
         {
-            
         }
     }
 }

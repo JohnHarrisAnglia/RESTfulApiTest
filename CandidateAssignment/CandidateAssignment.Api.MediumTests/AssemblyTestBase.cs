@@ -5,6 +5,7 @@ using CandidateAssignment.DataAccess;
 using CandidateAssignment.DataAccess.Repositories;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Diagnostics;
+using AutoFixture;
 
 namespace CandidateAssignment.Api.MediumTests
 {
@@ -13,6 +14,7 @@ namespace CandidateAssignment.Api.MediumTests
         protected CustomerController Sut;
         protected IGenericRepository<Customer> CustomerRepo;
         private ApplicationDbContext Context;
+        private Fixture Fixture;
 
         [TestInitialize]
         public void Init()
@@ -32,6 +34,11 @@ namespace CandidateAssignment.Api.MediumTests
             CustomerRepo = new GenericRepository<Customer>(context);
 
             Sut = new CustomerController(CustomerRepo);
+
+            Fixture = new Fixture();
+            Fixture.Behaviors.OfType<ThrowingRecursionBehavior>().ToList().ForEach(b => Fixture.Behaviors.Remove(b));
+            Fixture.Behaviors.Add(new OmitOnRecursionBehavior());
+            Fixture.Customize<Customer>(c => c.With(p => p.Address, Fixture.Create<Address>()));
         }
 
         [TestCleanup]
@@ -40,14 +47,15 @@ namespace CandidateAssignment.Api.MediumTests
             Context.Dispose();
         }
 
-        protected void SutAddCustomer(int numberOfCustomers)
+        protected void SutAddCustomersToDb(params Customer[] customers)
         {
-            for (int i = 0; i < numberOfCustomers; i++)
-            {
-                Context.AddRange(new Customer($"testman {i}", new Address("", "", "", ""), "+445676788899", ""));
-            }
-
+            Context.AddRange(customers);
             Context.SaveChanges();
+        }
+
+        protected Customer CreateCustomer()
+        {
+            return Fixture.Create<Customer>();
         }
     }
 }

@@ -5,15 +5,16 @@ namespace CandidateAssignment.Domain.Models.Entities
     public class Customer : Entity
     {
         [Required]
-        public string Name { get; private set; }
+        public string Name { get; set; }
+
         [Required]
-        public Address? Address { get; private set; }
+        public Address? Address { get; set; }
 
         [Required, MaxLength(13)]
-        public string PhoneNumber { get; private set; }
+        public string PhoneNumber { get; set; }
 
         [Required]
-        public string Website { get; private set; }
+        public string Website { get; set; }
 
         public virtual ICollection<Contact> Contacts { get; private set; } = new List<Contact>();
 
@@ -27,7 +28,7 @@ namespace CandidateAssignment.Domain.Models.Entities
 
         public Customer()
         {
-            
+
         }
     }
 }

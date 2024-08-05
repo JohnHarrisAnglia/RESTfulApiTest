@@ -13,7 +13,7 @@ namespace CandidateAssignment.Api.Controllers
         public CustomerController(IGenericRepository<Customer> customerRepo)
         {
             this.customerRepo = customerRepo;
-        }
+        }       
 
         [HttpGet]
         public IEnumerable<Customer> Get()
@@ -27,6 +27,22 @@ namespace CandidateAssignment.Api.Controllers
             var result = await customerRepo.GetByIdAsync(id);
 
             return result == null ? NotFound() : Ok(result);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> CreateAsync(Customer customer)
+        {
+            await customerRepo.CreateAsync(customer);
+
+            return Created();
+        }
+
+        [HttpPut]
+        public async Task<IActionResult> UpdateAsync(Customer customer)
+        {
+            await customerRepo.UpdateAsync(customer);
+
+            return NoContent();
         }
     }
 }

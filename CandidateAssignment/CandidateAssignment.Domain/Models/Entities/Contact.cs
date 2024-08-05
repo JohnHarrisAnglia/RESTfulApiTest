@@ -5,15 +5,15 @@ namespace CandidateAssignment.Domain.Models.Entities
     public class Contact : Entity
     {
         [Required]
-        public string FirstName { get; private set; }
+        public string FirstName { get; set; }
 
         [Required]
-        public string LastName { get; private set; }
+        public string LastName { get; set; }
 
         [Required, MaxLength(50)]
-        public string EmailAddress { get; private set; }
+        public string EmailAddress { get; set; }
 
-        public string PhoneNumber { get; private set; }
+        public string PhoneNumber { get; set; }
 
         public int? CustomerId { get; set; }
         public Customer? Customer { get; set; }
@@ -28,7 +28,7 @@ namespace CandidateAssignment.Domain.Models.Entities
 
         public Contact()
         {
-            
+
         }
     }
 }

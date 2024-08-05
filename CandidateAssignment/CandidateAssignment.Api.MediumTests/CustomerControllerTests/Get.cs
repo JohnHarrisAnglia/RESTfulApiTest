@@ -1,3 +1,5 @@
+using CandidateAssignment.Domain.Models.Entities;
+
 namespace CandidateAssignment.Api.MediumTests.CustomerControllerTests
 {
     [TestClass]
@@ -17,7 +19,13 @@ namespace CandidateAssignment.Api.MediumTests.CustomerControllerTests
         [DataRow(10)]
         public void Get_Should_Return_All_Customers(int numberOfCustomers)
         {
-            SutAddCustomer(numberOfCustomers);
+            List<Customer> customers = new List<Customer>();
+            for (int i = 0; i < numberOfCustomers; i++)
+            {
+                customers.Add(CreateCustomer());
+            }
+            SutAddCustomersToDb(customers.ToArray());
+
 
             var result = Sut.Get().ToList();
 

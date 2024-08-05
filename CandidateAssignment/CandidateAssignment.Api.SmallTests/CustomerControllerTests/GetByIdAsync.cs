@@ -9,7 +9,7 @@ namespace CandidateAssignment.Api.SmallTests.CustomerControllerTests
     public class GetByIdAsync : AssemblyTestBase
     {
         [TestMethod]
-        public async Task Get_Should_Call_Repository_GetAsync()
+        public async Task GetByIdAsync_Should_Call_Repository_GetAsync()
         {
             await Controller.GetByIdAsync(1);
 

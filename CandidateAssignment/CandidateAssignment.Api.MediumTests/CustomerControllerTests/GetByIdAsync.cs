@@ -9,9 +9,10 @@ namespace CandidateAssignment.Api.MediumTests.CustomerControllerTests
         [TestMethod]
         public async Task GetByIdAsync_Should_Return_NotFound_If_Not_Found()
         {
-            SutAddCustomer(1);
+            var customer = CreateCustomer();
+            SutAddCustomersToDb(customer);
 
-            var result = (await Sut.GetByIdAsync(2));
+            var result = (await Sut.GetByIdAsync(customer.Id + 1));
 
             Assert.IsNotNull(result);
             Assert.IsInstanceOfType(result, typeof(NotFoundResult));
@@ -20,14 +21,15 @@ namespace CandidateAssignment.Api.MediumTests.CustomerControllerTests
         [TestMethod]
         public async Task GetByIdAsync_Should_Return_Correct_Customer()
         {
-            SutAddCustomer(1);
+            var customer = CreateCustomer();
+            SutAddCustomersToDb(customer);
 
-            var result = await Sut.GetByIdAsync(1);
+            var result = await Sut.GetByIdAsync(customer.Id);
 
             Assert.IsNotNull(result);
 
             //This works but I hate it
-            Assert.AreEqual(1, ((result as ObjectResult).Value as Customer).Id);
+            Assert.AreEqual(customer.Id, ((result as ObjectResult).Value as Customer).Id);
         }
     }
 }
