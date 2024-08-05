@@ -14,7 +14,7 @@ namespace CandidateAssignment.Api.SmallTests
         public void Init()
         {
             CustomerRepo = Substitute.For<IGenericRepository<Customer>>();
-
+            
             Controller = new CustomerController(CustomerRepo);
         }
     }

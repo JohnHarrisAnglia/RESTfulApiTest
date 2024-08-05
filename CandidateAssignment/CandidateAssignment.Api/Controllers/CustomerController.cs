@@ -20,5 +20,13 @@ namespace CandidateAssignment.Api.Controllers
         {
             return customerRepo.GetAll();
         }
+
+        [HttpGet("{id:int}")]
+        public async Task<IActionResult> GetByIdAsync(int id)
+        {
+            var result = await customerRepo.GetByIdAsync(id);
+
+            return result == null ? NotFound() : Ok(result);
+        }
     }
 }
