@@ -2,7 +2,7 @@ To Run application:
 Should just be able build and Swagger UI will appear.
 You can then create a customer and use the other end points.
 
-One thing to notice is when creating a customer swagger will say Id=0 and you can add what ever you like but EF will give the Id so it'll be sequential but use the Get method if you lose track. This is an issue but I've spent enough time on this for an interview.
+One thing to notice is when creating a customer swagger will say Id=0 and you can add what ever value you like. EF will give the Id so it'll be sequential but use the Get method if you lose track. This is an issue but I've spent enough time on this for an interview.
 
 Assumptions/Design decisions 
 There's so much to improve on this with more time.
